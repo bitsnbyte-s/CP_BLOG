@@ -1,10 +1,11 @@
-var solutions_indx=[];
+var solutions_indx;
 let output1="";
 const questioncards = document.getElementById("count");
 $.getJSON('https://spreadsheets.google.com/feeds/cells/1nimQ1WlKMMbDJorNsxPp3gpSP0-lc9iJ2O5qKXaRW1o/1/public/full?alt=json', function(data) {
 
 //   console.log(data.feed.entry);
   var reqdata=data.feed.entry;
+  solutions_indx=reqdata;
   var k=reqdata.length;
   var questions=[];
   for(var i=7;i<k;i+=7){
@@ -24,6 +25,7 @@ $.getJSON('https://spreadsheets.google.com/feeds/cells/1nimQ1WlKMMbDJorNsxPp3gpS
 	var solution=reqdata[i+6].gs$cell.$t
 	
 	var show=document.getElementById("display");
+    
     solutions_indx.push(solution);
 	// console.log(time);
 	// console.log(name);
@@ -33,21 +35,15 @@ $.getJSON('https://spreadsheets.google.com/feeds/cells/1nimQ1WlKMMbDJorNsxPp3gpS
 	// console.log(sollang);
 	// console.log(solution);
     output1 += `       
-    <div class="outer">
-  
-    <div class="above_title">
-    <span id="name">${name}</span>
-        <span id="level">${difficulty}</span>
-    </div>
-        
-        <div class="inner">
-            ${questionname}
-        </div>
-        <div class="below_title">
-        <span id="view_question">View Question</span>
-        <span id="view_solution">View Solution</span>
-        </div>
-   </div>
+    <div class="card" style="width: 80%; height:20%; margin-top:2%; margin-left:10%;">
+  <div class="card-body" style="height:100%; width:100%; overflow:hidden;">
+    <h4 class="card-title">${questionname}</h4>
+    <h6 class="card-subtitle mb-2 text-muted">${difficulty}</h6>
+     <p class="card-text" style="white-space: pre-line;">${description}</p>
+     <button type="button" class="btn btn-primary">View Question</button>
+     <button type="button" class="btn btn-primary">View Solution</button>
+  </div>
+</div>
       
         `;
         
@@ -89,4 +85,5 @@ $.getJSON('https://spreadsheets.google.com/feeds/cells/1nimQ1WlKMMbDJorNsxPp3gpS
 
 
 });
-alert(solutions_indx.length);
+// alert(solutions_indx.length);
+console.log(solutions_indx)
