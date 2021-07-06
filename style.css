@@ -13,16 +13,28 @@ header{
     height: 100px;
     width:50% ;
     background-color: red;
-    margin-bottom: 10%;
+    margin-bottom: 2%;
 }
 .inner{
     background-color: purple;
-    height: 70%;
+    height: 50%;
     width: 90%;
-    
+    text-align: center;
     margin-left: 5%;
 }
 .display_question{
     height: 100%;
     width: 100%;
 }
+span{
+    color:white;
+    }
+    #name,#view_question{
+        text-align: left;
+        
+        }
+        #level,#view_solution{
+            text-align: right;
+            
+            
+            }
