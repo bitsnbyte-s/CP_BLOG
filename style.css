@@ -1,0 +1,28 @@
+body{
+    margin: 0px;
+    background-image: linear-gradient( to right,#000428 , #004e92);
+}
+header{
+    background-image: linear-gradient( to right,#133092 , #0e0253);
+    color: white;
+    height: 60px;
+    width: 100%;
+
+}
+.outer{
+    height: 100px;
+    width:50% ;
+    background-color: red;
+    margin-bottom: 10%;
+}
+.inner{
+    background-color: purple;
+    height: 70%;
+    width: 90%;
+    
+    margin-left: 5%;
+}
+.display_question{
+    height: 100%;
+    width: 100%;
+}
