@@ -2,11 +2,14 @@ var solutions_indx;
 let output1="";
 const questioncards = document.getElementById("count");
 $.getJSON('https://spreadsheets.google.com/feeds/cells/1nimQ1WlKMMbDJorNsxPp3gpSP0-lc9iJ2O5qKXaRW1o/1/public/full?alt=json', function(data) {
-
+console.log(data);
 //   console.log(data.feed.entry);
   var reqdata=data.feed.entry;
   solutions_indx=reqdata;
   var k=reqdata.length;
+  var countofques=k/7;
+  countofques=countofques-1;
+//   document.getElementById("ques_count").innerHTML=countofques;
   var questions=[];
   for(var i=7;i<k;i+=7){
 
@@ -36,76 +39,55 @@ $.getJSON('https://spreadsheets.google.com/feeds/cells/1nimQ1WlKMMbDJorNsxPp3gpS
 	// console.log(solution);
     var giving_id=i/7;
     output1 += `       
-    <div class="card" style="width: 80%; height:20%; margin-top:2%; margin-left:10%;">
+    <div class="card" style="width: 80%; height:20%; margin-top:2%; margin-left:10%;" id="${giving_id}"onClick="viewsolution(this.id)">
   <div class="card-body" style="height:100%; width:100%; overflow:hidden;">
     <h4 class="card-title">${questionname}</h4>
     <h6 class="card-subtitle mb-2 text-muted">${difficulty}</h6>
      <p class="card-text" style="white-space: pre-line;">${description}</p>
-     <div class="d-grid gap-2">
-     <button class="btn btn-primary" type="button" onclick="viewSolution(${giving_id}a)">View Solution</button>
      
-   </div>
   </div>
 </div>
-<div class="card text-white bg-success mb-3" style="width: 80%; height:20%; margin-top:2%; margin-left:10%; visibility: block;" id="${giving_id}a">
+<div class="card text-white bg-success mb-3" style="width: 80%; height:20%; margin-top:2%; margin-left:10%; visibility: block;" id="solution_${giving_id}">
   <div class="card-header"><h3>Solution</h3></div>
   <div class="card-body">
     <h5 class="card-title">Language:- ${sollang} </h5>
     <h5 class="card-title">Solution By:- ${name} </h5>
     <p class="card-text" style="white-space: pre-line;">${solution}</p>
     <h5 class="card-title">Time:- ${time} </h5>
-    <div class="d-grid gap-2">
-     <button class="btn btn-primary" type="button" onclick="closeSolution(${giving_id}a)" a">Close Solution</button>
-     
-   </div>
+    
   </div>
 </div>
       
         `;
-        
+        var creatid='#solution_'+giving_id;
+        $(""+creatid).slideToggle()
     questions.push({"Time":time,"Name":name,"Title":questionname,"Question":description,"Level":difficulty,"Language":sollang,"Solution":solution});
 	solutions_indx.push(solution);
 
   }
  
   document.getElementById("count").innerHTML=output1;
-  const showCards = () => {
-    let output = "";
-    questions.forEach(
-      ({ Time, Name, Title, Question, Level,Language,Solution }) => {
-        (output += `       
-        <div class="outer">
-            <br>
-            <div class="above_title">
-            <span id="name">${Name}</span>
-                <span id="level">${Level}</span>
-            </div>
-                
-                <div class="inner">
-                    ${Title}
-                </div>
-                <div class="below_title">
-                <span id="view_question">View Question</span>
-                <span id="view_solution">View Solution</span>
-                </div>
-           </div>
-      
-        `)
-        alert(questions.length);
-        alert(Name);
-      }
-    );
-    document.getElementById("count").innerHTML=output;
-    
-  };
+
 
 
 });
 // alert(solutions_indx.length);
-console.log(solutions_indx)
-function viewSolution(id){
-    document.getElementById(id).style.visibility = "block";
+// console.log(solutions_indx)
+function viewsolution(id){
+    console.log(id);
+    var creatid='#solution_'+id;
+    console.log(creatid);
+      
+   
+    $(""+creatid).slideToggle()
+  
 }
-function viewSolution(id){
-    document.getElementById(id).style.visibility = "none";
-}
+// function toogleall(){
+//     var k=document.getElementById("ques_count").innerText;
+//     console.log(k);
+//         for(var i=1;i<=k;i++){
+//         var creatid='#solution_'+i;
+//         $(""+creatid).slideToggle()
+//     }
+// }
+// document.(toogleall);

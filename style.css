@@ -7,33 +7,14 @@ header{
     color: white;
     height: 60px;
     width: 100%;
-
-}
-.outer{
-    height: 100px;
-    width:50% ;
-    background-color: red;
-    margin-bottom: 2%;
-}
-.inner{
-    background-color: purple;
-    height: 50%;
-    width: 90%;
     text-align: center;
-    margin-left: 5%;
+    font-size: 100px;
+    font-weight: 600;
 }
-.display_question{
-    height: 100%;
-    width: 100%;
+#no_of_ques{
+    /* float: right; */
+    height:100%;
+    width: 47%;
+   display: inline;
+    
 }
-span{
-    color:white;
-    }
-    #name,#view_question{
-        text-align: left;
-         }
-        #level,#view_solution{
-            text-align: right;
-            
-            
-            }
