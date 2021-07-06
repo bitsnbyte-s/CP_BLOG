@@ -1,5 +1,5 @@
 var questions=[];
-const questioncards = document.querySelector(".display_question");
+const questioncards = document.querySelector('body');
 $.getJSON('https://spreadsheets.google.com/feeds/cells/1nimQ1WlKMMbDJorNsxPp3gpSP0-lc9iJ2O5qKXaRW1o/1/public/full?alt=json', function(data) {
  
   console.log(data.feed.entry);
@@ -35,18 +35,25 @@ $.getJSON('https://spreadsheets.google.com/feeds/cells/1nimQ1WlKMMbDJorNsxPp3gpS
   }
 });
 var no_of_ques=questions.length;
-var x=document.getElementById("display");
-x.innerHTML=no_of_ques;
+// var x=document.getElementById("display");
+// x.innerHTML=no_of_ques;
 const showCards = () => {
     let output = "";
     questions.forEach(
       ({ Time, Name, questionname, Question, Level,Language,Solution }) => {
         (output += `       
-      
+        <div class="outer">
+                <div class="inner">
+
+                </div>
+                <span id="name"></span>
+                <span id="level"></span>
+                <span id="view_solution"></span>
+           </div>
       
         `)
       }
     );
-    projectcards.innerHTML = output;
+    questioncards.innerHTML = output;
   };
   document.addEventListener("DOMContentLoaded", showCards);
