@@ -1,19 +1,21 @@
 var solutions_indx;
 let output1="";
+let output2="";
 const questioncards = document.getElementById("count");
-$.getJSON('https://spreadsheets.google.com/feeds/cells/1nimQ1WlKMMbDJorNsxPp3gpSP0-lc9iJ2O5qKXaRW1o/1/public/full?alt=json', function(data) {
+$.getJSON('https://spreadsheets.google.com/feeds/cells/1s18hwCFf1_wvPn60yYDiugI2if54ujAfSXJb8_WNVu0/1/public/full?alt=json', function(data) {
 console.log(data);
-//   console.log(data.feed.entry);
+ // console.log(data.feed.entry);
   var reqdata=data.feed.entry;
   solutions_indx=reqdata;
   var k=reqdata.length;
   var countofques=k/7;
   countofques=countofques-1;
 //   document.getElementById("ques_count").innerHTML=countofques;
+// var que_list=document.getElementById("question_list");
   var questions=[];
   for(var i=7;i<k;i+=7){
 
-	var time=reqdata[i+0].gs$cell.$t;
+	var email=reqdata[i+0].gs$cell.$t;
 	
 	var name=reqdata[i+1].gs$cell.$t
 	
@@ -29,7 +31,7 @@ console.log(data);
 	
 	var show=document.getElementById("display");
     
-    solutions_indx.push(solution);
+    // solutions_indx.push(solution);
 	// console.log(time);
 	// console.log(name);
 	// console.log(questionname);
@@ -53,26 +55,25 @@ console.log(data);
     <h5 class="card-title">Language:- ${sollang} </h5>
     <h5 class="card-title">Solution By:- ${name} </h5>
     <p class="card-text" style="white-space: pre-line;">${solution}</p>
-    <h5 class="card-title">Time:- ${time} </h5>
+    <h5 class="card-title">Time:- ${email} </h5>
     
   </div>
 </div>
       
         `;
-        var creatid='#solution_'+giving_id;
-        $(""+creatid).slideToggle()
-    questions.push({"Time":time,"Name":name,"Title":questionname,"Question":description,"Level":difficulty,"Language":sollang,"Solution":solution});
-	solutions_indx.push(solution);
+        
+    // questions.push({"Time":time,"Name":name,"Title":questionname,"Question":description,"Level":difficulty,"Language":sollang,"Solution":solution});
+	// solutions_indx.push(solution);
 
   }
  
   document.getElementById("count").innerHTML=output1;
-
+// que_list.innerHTML=output2;
 
 
 });
 // alert(solutions_indx.length);
-// console.log(solutions_indx)
+console.log(solutions_indx)
 function viewsolution(id){
     console.log(id);
     var creatid='#solution_'+id;
@@ -82,12 +83,12 @@ function viewsolution(id){
     $(""+creatid).slideToggle()
   
 }
-// function toogleall(){
-//     var k=document.getElementById("ques_count").innerText;
-//     console.log(k);
-//         for(var i=1;i<=k;i++){
-//         var creatid='#solution_'+i;
-//         $(""+creatid).slideToggle()
-//     }
-// }
+function toogleall(){
+    var k=document.getElementById("ques_count").innerText;
+    console.log(k);
+        for(var i=1;i<=k;i++){
+        var creatid='#solution_'+i;
+        $(""+creatid).slideToggle()
+    }
+}
 // document.(toogleall);
