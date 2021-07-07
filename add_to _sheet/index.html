@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<!-- <script src="index.js"></script> -->
+    </head>
+    <body>
+        <div class="card text-white bg-primary mb-3" style="max-width: 60%;" id="cardforform">
+            <div class="card-header">Add Question To Blog</div>
+            <div class="card-body">
+              <h5 class="card-title">Your Email will be used as verification for edit and delete</h5>
+              <form name="send_data">
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label">Email</label>
+                    <input type="email" class="form-control" name="Email" id="Remail" placeholder="Someone@example.com" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label">Name</label>
+                    <input type="text" class="form-control" name="Name" id="Rname" placeholder="Enter your name" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">Question Title</label>
+                    <input type="text" class="form-control" name="Title" id="Rqtitle" placeholder="Enter question name" required>
+                  </div>
+                  <label for="formGroupExampleInput" class="form-label">Question description</label>
+                  <div class="form-floating">
+                    
+                    <textarea class="form-control" placeholder="Enter question here" name="Description" id="Rqdesc" style="height: 100px" required></textarea>
+                    
+                  </div>
+                  <div class="col-md-4">
+                    <label for="inputState" class="form-label">Difficulty</label>
+                    <select id="Rdiffi" name="Difficulty" class="form-select">
+                      <option selected>Beginner</option>
+                      <option>Easy</option>
+                      <option >Medium</option>
+                      <option >Hard</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <label for="inputState" class="form-label">Language</label>
+                    <select id="Rlang" name="Language" class="form-select">
+                      <option selected>C++</option>
+                      <option>Java</option>
+                      <option >Python</option>
+                      <option >C</option>
+                    </select>
+                  </div>
+                  <label for="formGroupExampleInput" class="form-label">Solution</label>
+                  <div class="form-floating">
+                    
+                    <textarea class="form-control" placeholder="Enter Solution here" name="Solution" id="Rsolution" style="height: 100px"></textarea>
+                    
+                  </div>
+                  <br>
+                  <div class="d-grid gap-2">
+                    
+                    <button class="btn btn-secondary btn-sm" type="submit">submit</button>
+                  </div>
+                </form>
+            </div>
+          </div>
+        
+          
+          <script src="script.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+          <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+      <script>
+          const scriptURL = 'https://script.google.com/macros/s/AKfycbxl6VmfS99XPv4-mXeaLUXbmLk0iIJTcrFFSETDSxKOriwF9EMKp2IGXdPs6Gu881BAbg/exec'
+  const form = document.forms['send_data']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
+      </script>
+    </body>
+</html>
