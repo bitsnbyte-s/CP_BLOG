@@ -41,12 +41,15 @@ console.log(data);
 	// console.log(solution);
     var giving_id=i/7;
     output1 += `       
-    <div class="card" style="width: 80%; height:20%; margin-top:2%; margin-left:10%;" id="${giving_id}"onClick="viewsolution(this.id)">
+    <div class="card" style="width: 80%; height:20%; margin-top:2%; margin-left:10%;" >
   <div class="card-body" style="height:100%; width:100%; overflow:hidden;">
     <h4 class="card-title">${questionname}</h4>
     <h6 class="card-subtitle mb-2 text-muted">${difficulty}</h6>
-     <p class="card-text" style="white-space: pre-line;">${description}</p>
-     
+     <p class="card-text" style="white-space: pre-line; " id="${giving_id}"onClick="viewsolution(this.id)">${description}</p>
+     <div class="d-grid gap-2 d-md-block">
+  <button class="btn btn-primary" onclick="editpost(${giving_id})" type="button">Edit</button>
+  <button class="btn btn-primary" onclick="deletepost(${giving_id})" type="button">Delete</button>
+</div>
   </div>
 </div>
 <div class="card text-white bg-success mb-3" style="width: 80%; height:20%; margin-top:2%; margin-left:10%; visibility: block;" id="solution_${giving_id}">
@@ -55,7 +58,7 @@ console.log(data);
     <h5 class="card-title">Language:- ${sollang} </h5>
     <h5 class="card-title">Solution By:- ${name} </h5>
     <p class="card-text" style="white-space: pre-line;">${solution}</p>
-    <h5 class="card-title">Time:- ${email} </h5>
+    
     
   </div>
 </div>
@@ -92,3 +95,9 @@ function toogleall(){
     }
 }
 // document.(toogleall);
+function editpost(id){
+  console.log("want to edit"+id);
+}
+function deletepost(id){
+console.log("want to delete post"+id);
+}
